@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ Комментарии }} :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'include/_sidebar.html' %}
+{% endblock %}
+{% block content %}
+
+<h1>Оставьте свой отзыв</h1>
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary btn-block">Отправить</button>
+</form>
+
+{% for i in comment %}
+    <h5>_______________________________________________</h5>
+    <h3>{{ i.name }}</h3>
+    <p>{{ i.text }}</p>
+    <h5>_______________________________________________</h5>
+{% endfor %}
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
